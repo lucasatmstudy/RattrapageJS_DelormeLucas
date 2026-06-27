@@ -1,0 +1,86 @@
+[{
+        "type": "humain",
+        "name": "John Doe",
+        "email": "j.smith@gmail.com",
+        "age": 25,
+        "avatar" : "./src/img/john.png",
+        "icon" : "./src/img/john_icon.png",
+        "latitude" : 43.604429,
+        "longitude" : 1.443812
+    },
+    {
+        "type": "humain",
+        "name": "Jane Smith",
+        "email": "ja.doe@sfr.fr",
+        "age": 5,
+        "avatar" : "./src/img/jane.png",
+        "icon" : "./src/img/jane_icon.png",
+        "latitude" : 43.60792, 
+        "longitude" : 1.44133
+    },
+    {
+        "type": "humain",
+        "name": "Le Vénérable",
+        "email": "levy@gmail.com",
+        "age": 500,
+        "avatar" : "./src/img/venerable.png",
+        "icon" : "./src/img/venerable_icon.png",
+        "latitude" : 43.60053,
+        "longitude" : 1.44590
+    },
+    {
+        "type": "animal de compagnie",
+        "espece": "chien",
+        "name": "Rox",
+        "age": 7,
+        "propriétaire": "John Doe",
+        "avatar" : "./src/img/chien.png",
+        "icon" : "./src/img/chien_icon.png",
+        "latitude" : 43.60377,
+        "longitude" : 1.43583
+    },
+    {
+        "type": "animal de compagnie",
+        "espece": "renard",
+        "name": "Roukie",
+        "age": 300,
+        "propriétaire": "Le Vénérable",
+        "avatar" : "./src/img/renard.jpg",
+        "icon" : "./src/img/renard_icon.png",
+        "latitude" : 43.59602,
+        "longitude" : 1.43692
+    },
+    {
+        "type": "Xeno",
+        "espece": "Krogan",
+        "name": "Wrex",
+        "menace": "Rouge",
+        "age": 45,
+        "avatar" : "./src/img/wrex.png",
+        "icon" : "./src/img/wrex_icon.png",
+        "latitude" : 43.59555,
+        "longitude" : 1.45257
+    },
+    {
+        "type": "Xeno",
+        "espece": "Turien",
+        "name": "Garrus",
+        "menace": "Vert",
+        "age": 35,
+        "avatar" : "./src/img/garrus.png",
+        "icon" : "./src/img/garrus_icon.png",
+        "latitude" : 43.61108,
+        "longitude" : 1.45539
+    },
+    {
+        "type": "Xeno",
+        "espece": "Asari",
+        "name": "Liara",
+        "menace": "ULTRA Rouge",
+        "age": 25,
+        "avatar" : "./src/img/liara.png",
+        "icon" : "./src/img/liara_icon.png",
+        "latitude" : 43.61183,
+        "longitude" :  1.43222
+    }
+]
