@@ -6,12 +6,12 @@ async function fetchJSON() {
     try {                                    //vérification d'erreur
         const reponse = await fetch(url);   //await attend d'avoir la réponse pour continuer la lecture du code
         if (!reponse.ok) {                  //vérifie si la réponse N'est PAS ok
-        throw new Error(`Statut de réponse : ${reponse.status}`); //stop la fonction et envoie une erreur N'est PAS ok est vrai
+            throw new Error(`Statut de réponse : ${reponse.status}`); //stop la fonction et envoie une erreur N'est PAS ok est vrai
         }
         const resultat = await reponse.json(); //tout va bien, création de la constante, un tableau conprensible en JS du fichier json
         return resultat  // retouner le resultat pour pouvoir l'utiliser en dehors de la fonction et met fin à la fonction
     } catch (erreur) {  //il y a un erreur, catch s'active si il y a une erreur au moment du try
-        console.error(erreur.message); // affiche l'erreur dans la console
+            console.error(erreur.message); // affiche l'erreur dans la console
     }
 }
 
@@ -90,7 +90,7 @@ function profil(tableauProfil) {
     return cardList; // retouner le resultat pour pouvoir l'utiliser en dehors de la fonction et met fin à la fonction
 }
 
-//Fonction qui ajoute les card dans la balise ayant le class=profils
+//Fonction qui ajoute les card dans la balise ayant la class=profils
 function profilAll(tousProfils) {
     const profils = document.querySelector(".profils"); //Création d'une constante pour cibler la balise avec la class=profils
     const cardList = profil(tousProfils); //création d'une constante pour utiliser le resultat de la fonction profil
@@ -101,5 +101,37 @@ function profilAll(tousProfils) {
 }
 
 //FONCTION LAUNCH()
+async function launch (map) { //Fonction asynchrone général qui lance toutes les fonctionne précédent
+    try {
+        const tabData = await fetchJSON(); //constante pour récupérer le tableau json et attente de la réponse
+        if (!tabData) { //vérifie l'existance de tabData
+            throw new Error(`Données de profil absente`); //Si tabData n'existe pas, stop la fonction et envoie une erreur
+        }
+        profilAll(tabData);     //appel de la fonction profilAll
+        tabData.forEach(element => { //fonction boucle qui créer les marqueur
+            const ICON = L.icon ({ //création de l'icon du marker avec ses options
+                iconUrl: element.icon, //option d'image de l'icon
+                iconSize: [50, 83], //option de taille de l'icon
+                iconAnchor: [25, 83] //option de position de l'icon
+            })
+            const marker = L.marker ([element.latitude, element.longitude], {icon: ICON}).addTo(map); //création du marker et ajout des option
+        })
+    } catch (erreur) { //il y a un erreur, catch s'active si il y a une erreur au moment du try
+            console.error(erreur.message); // affiche l'erreur dans la console
+    }
+}
 
 //LEAFLET
+const map = L.map('map').setView([43.604429, 1.443812], 14); //initialisation de la carte avec ses coordonées et son zoom 
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { //ajout des tuiles depuis l'url openstreetmap
+    maxZoom: 19, //niveau de zoom max
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' //mention legal - lien vers openstreetmap
+}).addTo(map); //ajout de L.titelayer à la const map
+
+
+//LE GRAND FINAL, appel de la fonction et ça fonctionne, GG !!!!
+launch (map);
+
+// J'ai beaucoup aimé l'exercice, mais cela ma pris du temps, je comprends la logique mais j'ai du mal à me souvenir des syntaxes.
+// J'ai besoin d'en faire encore et encore pour que cela devienne automatique.
+// Si vous avez d'autres évaluations ou exercices du même style, j'aimerais bien les avoir pour m'entraîner.
